@@ -4,7 +4,7 @@ from pandas import *
 import numpy
 from pathlib import Path
 
-from helpers import parse_int, get_all_ints_from_string
+from helpers import parse_int, get_all_ints_from_string, lets_say_its_inf
 
 
 class Graph:
@@ -20,21 +20,8 @@ class Graph:
     started_parsing_numbers = bool
     file_name = ""
 
-    # def __init__(self):
-    # self.number_of_citites = int
-    # self.cost_matrix = [int, int]
-    # self.neighbourhood_matrix = [bool, bool]
-    # self.best_cycle_cost = int
-    # self.all_numbers = []
-    # self.absolute_directory
-    # self.x_position = int
-    # self.y_position = int
-    # self.end_parsing_from_file = bool
-    # self.started_parsing_numbers = bool
-    # self.file_name
-
     def __init__(self, filename="", choice=-1):
-        self.best_cycle_cost = -1
+        self.best_cycle_cost = lets_say_its_inf()
         self.file_name = filename
         self.x_position = 0
         self.y_position = 0
@@ -68,6 +55,8 @@ class Graph:
         absolute_directory = absolute_directory + "large\\" + file_name
         parsed_number_of_cities = False
 
+
+
         try:
             with open(absolute_directory, "r") as file:
                 for line in file:
@@ -88,7 +77,7 @@ class Graph:
 
     def set_infinity_on_inaccessible_places(self):
         for x in range(self.number_of_cities):
-            self.cost_matrix[x, x] = -1
+            self.cost_matrix[x, x] = lets_say_its_inf()
 
     def try_parse_number_of_cities(self, line_text_array):
         success = False
@@ -127,7 +116,7 @@ class Graph:
     def create_neighbourhood_matrix(self):
         for x in range(self.number_of_cities):
             for y in range(self.number_of_cities):
-                if self.cost_matrix[x, y] != -1:
+                if self.cost_matrix[x, y] != lets_say_its_inf():
                     self.neighbourhood_matrix[x, y] = True
                 else:
                     self.neighbourhood_matrix[x, y] = False
