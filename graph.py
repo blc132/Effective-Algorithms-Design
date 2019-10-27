@@ -1,16 +1,14 @@
 import os
+from pandas import *
+
 import numpy
+from pathlib import Path
 
-
-def parse_int(s, base=10, val=False):
-    if s.isdigit():
-        return int(s, base)
-    else:
-        return val
+from helpers import parse_int, get_all_ints_from_string
 
 
 class Graph:
-    number_of_cities = int
+    number_of_cities = 0
     cost_matrix = [int, int]
     neighbourhood_matrix = [bool, bool]
     best_cycle_cost = int
@@ -35,22 +33,26 @@ class Graph:
     # self.started_parsing_numbers = bool
     # self.file_name
 
-    def __init__(self, filename, choice):
-        self.best_cycle_cost = float("inf")
+    def __init__(self, filename="", choice=-1):
+        self.best_cycle_cost = -1
         self.file_name = filename
         self.x_position = 0
         self.y_position = 0
         self.end_parsing_from_file = False
-        self.absolute_directory = os.path.dirname(os.path.realpath(__file__)) + "\\Macierze PEA\\"
+        self.absolute_directory = os.path.dirname(os.path.realpath(__file__)) + "\\matrixes\\"
+        if choice == 0:
+            self.parse_small_graph(self.absolute_directory, self.file_name)
+        if choice == 1:
+            self.parse_large_graph(self.absolute_directory, self.file_name)
 
     def parse_small_graph(self, absolute_directory, file_name):
         absolute_directory = absolute_directory + "small\\" + file_name
-        separators = {' ', '\r'}
 
         try:
-            self.all_text = open(absolute_directory, 'r')
-            self.all_numbers = self.all_text.split(separators)
-            if self.all_numbers is None:
+            all_text = Path(absolute_directory).read_text()
+            self.all_numbers = get_all_ints_from_string(all_text)
+
+            if self.all_numbers is None or self.all_numbers == "":
                 raise Exception("Taki plik nie istnieje!")
 
             self.number_of_cities = int(self.all_numbers[0])
@@ -73,7 +75,8 @@ class Graph:
                     if not parsed_number_of_cities:
                         try_to_parse = self.try_parse_number_of_cities(line_text_array)
                         if try_to_parse:
-                            self.neighbourhood_matrix = numpy.zeros((self.number_of_cities, self.number_of_cities), dtype=bool)
+                            self.neighbourhood_matrix = numpy.zeros((self.number_of_cities, self.number_of_cities),
+                                                                    dtype=bool)
                             self.cost_matrix = numpy.zeros((self.number_of_cities, self.number_of_cities), dtype=int)
                             parsed_number_of_cities = True
                     if parsed_number_of_cities:
@@ -83,10 +86,9 @@ class Graph:
         except Exception:
             print(Exception + "\n")
 
-
     def set_infinity_on_inaccessible_places(self):
         for x in range(self.number_of_cities):
-            self.cost_matrix[x, x] = float("inf")
+            self.cost_matrix[x, x] = -1
 
     def try_parse_number_of_cities(self, line_text_array):
         success = False
@@ -116,41 +118,22 @@ class Graph:
                 self.end_parsing_from_file = True
 
     def create_cost_matrix(self):
-        success = False
         aux = 1
-        x = 0
-        y = 0
-        while x < self.number_of_cities:
-            while y < self.number_of_cities:
-                success = parse_int(self.all_numbers[aux])
-                if success:
-                    y += 1
-                    self.cost_matrix[x, y] = success
-            if success:
-                x += 1
+        for x in range(self.number_of_cities):
+            for y in range(self.number_of_cities):
+                self.cost_matrix[x, y] = self.all_numbers[aux]
+                aux += 1
 
     def create_neighbourhood_matrix(self):
         for x in range(self.number_of_cities):
             for y in range(self.number_of_cities):
-                if self.cost_matrix[x, y] != float("inf"):
+                if self.cost_matrix[x, y] != -1:
                     self.neighbourhood_matrix[x, y] = True
                 else:
                     self.neighbourhood_matrix[x, y] = False
 
     def display_cost_matrix(self):
-        for x in range(self.number_of_cities):
-            for y in range(self.number_of_cities):
-                if self.cost_matrix[x, y] == float("inf"):
-                    print("0 ")
-                else:
-                    print(self.cost_matrix[x, y] + " ")
-            print("\n")
+        print(DataFrame(self.cost_matrix))
 
     def display_neighbourhood_matrix(self):
-        for x in range(self.number_of_cities):
-            for y in range(self.number_of_cities):
-                if self.neighbourhood_matrix[x, y]:
-                    print("1 ")
-                else:
-                    print("0 ")
-            print("\n")
+        print(DataFrame(self.neighbourhood_matrix).astype(int))
