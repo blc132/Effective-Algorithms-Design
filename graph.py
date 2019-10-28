@@ -1,10 +1,8 @@
 import os
 from pandas import *
-
 import numpy
-from pathlib import Path
 
-from helpers import parse_int, get_all_ints_from_string, lets_say_its_inf
+from helpers import parse_int, get_all_ints_from_string, lets_say_its_inf, ptype
 
 
 class Graph:
@@ -61,33 +59,6 @@ class Graph:
     def set_infinity_on_inaccessible_places(self):
         for x in range(self.number_of_cities):
             self.cost_matrix[x, x] = lets_say_its_inf()
-
-    def try_parse_number_of_cities(self, line_text_array):
-        success = False
-        for word in line_text_array:
-            if "DIMENSION:" in word:
-                success = True
-            if success:
-                number_of_cities = parse_int(word)
-                if number_of_cities:
-                    return True
-        return False
-
-    def parse_numbers_to_matrix(self, line_text_array):
-        for word in line_text_array:
-            if "EDGE_WEIGHT_SECTION" in word:
-                self.started_parsing_numbers = True
-            if self.started_parsing_numbers:
-                success = parse_int(word)
-                if success:
-                    self.cost_matrix[self.x_position, self.y_position] = success
-                    if self.x_position < self.number_of_cities - 1:
-                        self.x_position += 1
-                    else:
-                        self.x_position = 0
-                        self.y_position += 1
-            if self.x_position == self.number_of_cities - 1 & self.y_position == self.number_of_cities - 1:
-                self.end_parsing_from_file = True
 
     def create_cost_matrix(self):
         aux = 0
