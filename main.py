@@ -1,3 +1,4 @@
+from bruteforce import BruteForce
 from graph import Graph
 from os import system, name
 import os
@@ -16,8 +17,6 @@ def print_to_continue():
 
 def main():
     graph = Graph()
-    file_name = ""
-    choice = 0
 
     while 1:
         clear()
@@ -76,7 +75,15 @@ def main():
             print_to_continue()
 
         if choice == '5':
-            print("Brutforce")
+            if graph.file_name != "":
+                bf = BruteForce(graph)
+                bf.starting_vertex = 0
+                bf.start(0)
+                print("Najlepszy cykl ma wagę: " + str(bf.best_cycle_cost))
+                print("Optymalny cykl: ")
+                bf.display_optimal_route()
+            else:
+                print("Nie wczytano żadnego grafu")
             print_to_continue()
 
         if choice == '6':
