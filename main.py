@@ -1,4 +1,5 @@
 from bruteforce import BruteForce
+from dynamicprogramming import DynamicProgramming
 from graph import Graph
 from os import system, name
 import os
@@ -87,7 +88,14 @@ def main():
             print_to_continue()
 
         if choice == '6':
-            print("Dynamic Programming")
+            if graph.file_name != "":
+                dp = DynamicProgramming(graph)
+                dp.start(0)
+                print("Najlepszy cykl ma wagę: " + str(dp.best_cycle_cost))
+                print("Optymalny cykl: ")
+                dp.display_optimal_route()
+            else:
+                print("Nie wczytano żadnego grafu")
             print_to_continue()
 
         if choice == '7':
