@@ -1,3 +1,5 @@
+from timeit import default_timer as timer
+
 from bruteforce import BruteForce
 from dynamicprogramming import DynamicProgramming
 from graph import Graph
@@ -14,6 +16,52 @@ def clear():
 
 def print_to_continue():
     input("Aby kontynuować wciśnij dowolny klawisz")
+
+
+def test(graph):
+    repeats: int
+    choice: int
+
+    clear()
+    repeats = int(input("Liczba powtórzeń: "))
+
+    while 1:
+        clear()
+        print("Możliwości do wyboru:\n")
+        print("1. Brute Force")
+        print("2. Programowanie dynamiczne")
+        print("3. Powrót do głównego menu")
+        choice = input("\nPodaj numer: ")
+        if choice == '1':
+            start = timer()
+            for x in range(repeats):
+                bf = BruteForce(graph)
+                bf.start(0)
+
+            end = timer()
+            time = format((end - start) / repeats, '.8f')
+            print(time)
+            f = open("bf_measurement.txt", "w+")
+            f.write(graph.file_name + "\n" + time)
+            f.close()
+            print_to_continue()
+
+        if choice == '2':
+            start = timer()
+            for x in range(repeats):
+                dp = DynamicProgramming(graph)
+                dp.start(0)
+
+            end = timer()
+            time = format((end - start) / repeats, '.8f')
+            print(time)
+            f = open("dp_measurement.txt", "w+")
+            f.write(graph.file_name + "\n" + time)
+            f.close()
+            print_to_continue()
+
+        if choice == '3':
+            return
 
 
 def main():
@@ -99,7 +147,10 @@ def main():
             print_to_continue()
 
         if choice == '7':
-            print("Tests")
+            if graph.file_name != "":
+                test(graph)
+            else:
+                print("Nie wczytano żadnego grafu")
             print_to_continue()
 
         if choice == '8':
