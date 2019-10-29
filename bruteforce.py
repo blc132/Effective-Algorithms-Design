@@ -1,7 +1,7 @@
 from graph import Graph
 from collections import deque
 
-from helpers import lets_say_its_inf, ptype
+from helpers import INF
 
 
 class BruteForce(Graph):
@@ -13,7 +13,7 @@ class BruteForce(Graph):
 
     def __init__(self, graph):
         Graph.__init__(self, filename="", choice=-1)
-        self.best_cycle_cost = lets_say_its_inf()
+        self.best_cycle_cost = INF
 
         self.neighbourhood_matrix = graph.neighbourhood_matrix
         self.cost_matrix = graph.cost_matrix
@@ -25,23 +25,32 @@ class BruteForce(Graph):
     def start(self, current_vertex):
         self.aux_route.append(current_vertex)
 
+        # jesli route jest mniejszy to zaznacz ten wierzchołek jako odwiedzony
+        # w przeciwnym razie to oznacza, ze zrobilismy caly cykl hamiltona i ten wierzcholek byl juz odwiedzony
         if len(self.aux_route) < self.number_of_cities:
             self.visited[current_vertex] = True
 
             for x in range(self.number_of_cities):
+                # jesli wierzcholki current_vertex i x są sąsiadami i wierzchołek x nie był odwiedzony
                 if self.neighbourhood_matrix[current_vertex, x] and not self.visited[x]:
+                    # dodaj do tymczasowego kosztu koszt pomiedzy current_vertex i x
                     self.aux_cycle_cost += self.cost_matrix[current_vertex, x]
+                    # i zacznij metode od wierzcholka x
                     self.start(x)
+                    # usuwamy koszt który był w poprzedniej iteracji
                     self.aux_cycle_cost -= self.cost_matrix[current_vertex, x]
             self.visited[current_vertex] = False
+        # jesli to ostatni cykl, tj. zostala trasa od ostatniego do pierwszego
         elif self.neighbourhood_matrix[self.starting_vertex, current_vertex]:
             self.aux_cycle_cost += self.cost_matrix[current_vertex, self.starting_vertex]
 
+            # sprawdzenie czy tymczasowy koszt jest lepszy (tj. mniejszy) niz aktualnie najlepszy koszt
             if self.aux_cycle_cost < self.best_cycle_cost:
                 self.route.clear()
                 self.best_cycle_cost = self.aux_cycle_cost
                 self.route = self.aux_route.copy()
                 self.route.append(self.starting_vertex)
+            # usuwamy koszt który był w poprzedniej trasie
             self.aux_cycle_cost -= self.cost_matrix[current_vertex, self.starting_vertex]
 
         self.aux_route.pop()
