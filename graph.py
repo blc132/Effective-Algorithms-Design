@@ -2,7 +2,7 @@ import os
 from pandas import *
 import numpy
 
-from helpers import parse_int, get_all_ints_from_string, lets_say_its_inf, ptype
+from helpers import get_all_ints_from_string, INF
 
 
 class Graph:
@@ -18,7 +18,7 @@ class Graph:
     file_name = ""
 
     def __init__(self, filename="", choice=-1):
-        self.best_cycle_cost = lets_say_its_inf()
+        self.best_cycle_cost = INF
         self.file_name = filename
         self.x_position = 0
         self.y_position = 0
@@ -58,7 +58,7 @@ class Graph:
 
     def set_infinity_on_inaccessible_places(self):
         for x in range(self.number_of_cities):
-            self.cost_matrix[x, x] = lets_say_its_inf()
+            self.cost_matrix[x, x] = INF
 
     def create_cost_matrix(self):
         aux = 0
@@ -70,7 +70,7 @@ class Graph:
     def create_neighbourhood_matrix(self):
         for x in range(self.number_of_cities):
             for y in range(self.number_of_cities):
-                if self.cost_matrix[x, y] != lets_say_its_inf():
+                if self.cost_matrix[x, y] != INF:
                     self.neighbourhood_matrix[x, y] = True
                 else:
                     self.neighbourhood_matrix[x, y] = False

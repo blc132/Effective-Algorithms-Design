@@ -3,7 +3,7 @@ import numpy
 from graph import Graph
 from collections import deque
 
-from helpers import lets_say_its_inf
+from helpers import INF
 
 
 class DynamicProgramming(Graph):
@@ -15,7 +15,7 @@ class DynamicProgramming(Graph):
 
     def __init__(self, graph):
         Graph.__init__(self, filename="", choice=-1)
-        self.best_cycle_cost = lets_say_its_inf()
+        self.best_cycle_cost = INF
 
         self.neighbourhood_matrix = graph.neighbourhood_matrix
         self.cost_matrix = graph.cost_matrix
@@ -23,15 +23,13 @@ class DynamicProgramming(Graph):
         self.number_of_cities = graph.number_of_cities
 
         self.all_visited_vertices_mask = (1 << self.number_of_cities) - 1
-        self.all_vertices_subsets = numpy.full((self.number_of_cities, 1 << self.number_of_cities), lets_say_its_inf(), dtype=int)
-        # self.all_vertices_subsets = [self.number_of_cities, 1 << self.number_of_cities]
-        self.sub_path_indexes = numpy.full((self.number_of_cities, 1 << self.number_of_cities), lets_say_its_inf(), dtype=int)
-        # self.sub_path_indexes = [self.number_of_cities, 1 << self.number_of_cities]
+        self.all_vertices_subsets = numpy.full((self.number_of_cities, 1 << self.number_of_cities), INF, dtype=int)
+        self.sub_path_indexes = numpy.full((self.number_of_cities, 1 << self.number_of_cities), INF, dtype=int)
 
         for x in range(self.number_of_cities):
             for y in range(self.all_visited_vertices_mask + 1):
-                self.all_vertices_subsets[x, y] = lets_say_its_inf()
-                self.sub_path_indexes[x, y] = lets_say_its_inf()
+                self.all_vertices_subsets[x, y] = INF
+                self.sub_path_indexes[x, y] = INF
 
     def start(self, starting_vertex):
         self.starting_vertex = starting_vertex
@@ -51,13 +49,14 @@ class DynamicProgramming(Graph):
         if current_vertex_state_mask == self.all_visited_vertices_mask:
             return self.cost_matrix[current_vertex, self.starting_vertex]
 
-        if self.all_vertices_subsets[current_vertex, current_vertex_state_mask] != lets_say_its_inf():
+        if self.all_vertices_subsets[current_vertex, current_vertex_state_mask] != INF:
             return self.all_vertices_subsets[current_vertex, current_vertex_state_mask]
 
-        minimum_cost_of_travel = lets_say_its_inf()
+        minimum_cost_of_travel = INF
         current_vertex_index: int = -1
 
         for x in range(self.number_of_cities):
+            # jesli zostalo odwiedzone
             if current_vertex_state_mask & (1 << x) != 0:
                 continue
             next_state_mask = current_vertex_state_mask | (1 << x)
