@@ -17,7 +17,6 @@ class DynamicProgramming(Graph):
         Graph.__init__(self, filename="", choice=-1)
         self.best_cycle_cost = INF
 
-        self.neighbourhood_matrix = graph.neighbourhood_matrix
         self.cost_matrix = graph.cost_matrix
         self.file_name = graph.file_name
         self.number_of_cities = graph.number_of_cities

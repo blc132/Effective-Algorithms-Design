@@ -116,14 +116,6 @@ def main():
             print_to_continue()
 
         if choice == '4':
-            clear()
-            if graph.number_of_cities != 0:
-                graph.display_neighbourhood_matrix()
-            else:
-                print("Nie wczytano żadnego grafu")
-            print_to_continue()
-
-        if choice == '5':
             if graph.file_name != "":
                 bf = BruteForce(graph)
                 bf.starting_vertex = 0
@@ -135,7 +127,7 @@ def main():
                 print("Nie wczytano żadnego grafu")
             print_to_continue()
 
-        if choice == '6':
+        if choice == '5':
             if graph.file_name != "":
                 dp = DynamicProgramming(graph)
                 dp.start(0)
@@ -146,14 +138,14 @@ def main():
                 print("Nie wczytano żadnego grafu")
             print_to_continue()
 
-        if choice == '7':
+        if choice == '6':
             if graph.file_name != "":
                 test(graph)
             else:
                 print("Nie wczytano żadnego grafu")
             print_to_continue()
 
-        if choice == '8':
+        if choice == '7':
             print_to_continue()
             clear()
             return

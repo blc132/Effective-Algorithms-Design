@@ -38,7 +38,6 @@ class Graph:
         self.cost_matrix = numpy.zeros((self.number_of_cities, self.number_of_cities), dtype=int)
         self.create_cost_matrix()
         self.set_infinity_on_inaccessible_places()
-        self.create_neighbourhood_matrix()
 
     def parse_large_graph(self, absolute_directory, file_name):
         absolute_directory = absolute_directory + "large\\" + file_name
@@ -54,7 +53,6 @@ class Graph:
         self.cost_matrix = numpy.zeros((self.number_of_cities, self.number_of_cities), dtype=int)
         self.create_cost_matrix()
         self.set_infinity_on_inaccessible_places()
-        self.create_neighbourhood_matrix()
 
     def set_infinity_on_inaccessible_places(self):
         for x in range(self.number_of_cities):
@@ -67,18 +65,6 @@ class Graph:
                 self.cost_matrix[x, y] = self.all_numbers[aux]
                 aux += 1
 
-    def create_neighbourhood_matrix(self):
-        for x in range(self.number_of_cities):
-            for y in range(self.number_of_cities):
-                if self.cost_matrix[x, y] != INF:
-                    self.neighbourhood_matrix[x, y] = True
-                else:
-                    self.neighbourhood_matrix[x, y] = False
-
     def display_cost_matrix(self):
         print(DataFrame(self.cost_matrix))
-        print("\n")
-
-    def display_neighbourhood_matrix(self):
-        print(DataFrame(self.neighbourhood_matrix).astype(int))
         print("\n")
