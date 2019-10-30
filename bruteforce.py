@@ -31,7 +31,7 @@ class BruteForce(Graph):
 
             for x in range(self.number_of_cities):
                 # jesli wierzcholki current_vertex i x są sąsiadami i wierzchołek x nie był odwiedzony
-                if self.neighbourhood_matrix[current_vertex, x] and not self.visited[x]:
+                if not self.visited[x]:
                     # dodaj do tymczasowego kosztu koszt pomiedzy current_vertex i x
                     self.aux_cycle_cost += self.cost_matrix[current_vertex, x]
                     # i zacznij metode od wierzcholka x
@@ -40,7 +40,7 @@ class BruteForce(Graph):
                     self.aux_cycle_cost -= self.cost_matrix[current_vertex, x]
             self.visited[current_vertex] = False
         # jesli to ostatni cykl, tj. zostala trasa od ostatniego do pierwszego
-        elif self.neighbourhood_matrix[self.starting_vertex, current_vertex]:
+        else:
             self.aux_cycle_cost += self.cost_matrix[current_vertex, self.starting_vertex]
 
             # sprawdzenie czy tymczasowy koszt jest lepszy (tj. mniejszy) niz aktualnie najlepszy koszt
