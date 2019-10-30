@@ -41,9 +41,8 @@ def test(graph):
             end = timer()
             time = format((end - start) / repeats, '.8f')
             print(time)
-            f = open("bf_measurement.txt", "w+")
-            f.write(graph.file_name + "\n" + time)
-            f.close()
+            with open('bf_measurement.txt', 'a+') as the_file:
+                the_file.write(graph.file_name + "\n" + time + "\n")
             print_to_continue()
 
         if choice == '2':
@@ -55,9 +54,8 @@ def test(graph):
             end = timer()
             time = format((end - start) / repeats, '.8f')
             print(time)
-            f = open("dp_measurement.txt", "w+")
-            f.write(graph.file_name + "\n" + time)
-            f.close()
+            with open('dp_measurement.txt', 'a+') as the_file:
+                the_file.write(graph.file_name + "\n" + time + "\n")
             print_to_continue()
 
         if choice == '3':
@@ -69,7 +67,7 @@ def main():
 
     while 1:
         clear()
-        print("Program do wyznaczania optymalnego cyklu Hamiltiona dla asymetrycznego problemu komiwojażera (ATSP)\n")
+        print("Program do wyznaczania optymalnego cyklu Hamiltiona dla problemu komiwojażera\n")
 
         if graph.number_of_cities != 0:
             print("Liczba wierzchołków aktualnie wczytanego grafu: " + str(graph.number_of_cities) + "\n")
@@ -79,11 +77,10 @@ def main():
         print("1. Wczytaj małą macierz grafu")
         print("2. Wczytaj dużą macierz grafu")
         print("3. Wyświetl macierz kosztów")
-        print("4. Wyświetl macierz sąsiedztwa")
-        print("5. Rozwiąż problem komiwojażera za pomocą metody Brute Force")
-        print("6. Rozwiąż problem komiwojażera za pomocą metody programowania dynamicznego")
-        print("7. Przeprowadź testy seryjne")
-        print("8. Zakończ działanie programu")
+        print("4. Rozwiąż problem komiwojażera za pomocą metody Brute Force")
+        print("5. Rozwiąż problem komiwojażera za pomocą metody programowania dynamicznego")
+        print("6. Przeprowadź testy seryjne")
+        print("7. Zakończ działanie programu")
         choice = input("\nPodaj numer: ")
         if choice == '1':
             clear()
