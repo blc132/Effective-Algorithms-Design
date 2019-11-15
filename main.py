@@ -6,6 +6,8 @@ from graph import Graph
 from os import system, name
 import os
 
+from simulatedannealing import SimulatedAnnealing
+
 
 def clear():
     if name == 'nt':
@@ -19,8 +21,6 @@ def print_to_continue():
 
 
 def test(graph):
-    repeats: int
-    choice: int
 
     clear()
     repeats = int(input("Liczba powtórzeń: "))
@@ -30,7 +30,8 @@ def test(graph):
         print("Możliwości do wyboru:\n")
         print("1. Brute Force")
         print("2. Programowanie dynamiczne")
-        print("3. Powrót do głównego menu")
+        print("3. Symulowane wyżarzanie")
+        print("4. Powrót do głównego menu")
         choice = input("\nPodaj numer: ")
         if choice == '1':
             start = timer()
@@ -58,7 +59,20 @@ def test(graph):
                 the_file.write(graph.file_name + "\n" + time + "\n")
             print_to_continue()
 
-        if choice == '3':
+        if choice == '2':
+            start = timer()
+            for x in range(repeats):
+                dp = DynamicProgramming(graph)
+                dp.start(0)
+
+            end = timer()
+            time = format((end - start) / repeats, '.8f')
+            print(time)
+            with open('dp_measurement.txt', 'a+') as the_file:
+                the_file.write(graph.file_name + "\n" + time + "\n")
+            print_to_continue()
+
+        if choice == '4':
             return
 
 
@@ -79,8 +93,9 @@ def main():
         print("3. Wyświetl macierz kosztów")
         print("4. Rozwiąż problem komiwojażera za pomocą metody Brute Force")
         print("5. Rozwiąż problem komiwojażera za pomocą metody programowania dynamicznego")
-        print("6. Przeprowadź testy seryjne")
-        print("7. Zakończ działanie programu")
+        print("6. Rozwiąż problem komiwojażera za pomocą metody symulowanego wyżarzania")
+        print("7. Przeprowadź testy seryjne")
+        print("8. Zakończ działanie programu")
         choice = input("\nPodaj numer: ")
         if choice == '1':
             clear()
@@ -88,7 +103,7 @@ def main():
             print(*os.listdir("./matrixes/small/"), sep='\n')
             print("-----------")
             file_name = input("Podaj nazwę pliku z małym grafem: ")
-            graph = Graph(file_name, 0)
+            graph = Graph("tsp_10.txt", 0)
             print("Wczytano graf z " + str(graph.number_of_cities) + " wierzchołkami\nAby kontynuwać wciśnij dowolny "
                                                                      "klawisz")
             choice = 0
@@ -136,13 +151,30 @@ def main():
             print_to_continue()
 
         if choice == '6':
+            # graph = Graph("tsp_10.txt", 0)
+            graph.display_cost_matrix()
+            if graph.file_name != "":
+                t_0 = float(input("Temperatura początkowa wyżarzania: "))
+                t_min = float(input("Temperatura minimalna wyżarzania: "))
+                t_coefficient = float(input("Współczynnik wyżarzania z zakresu (0,1): "))
+                sa = SimulatedAnnealing(graph)
+                sa.start(t_0, t_min, t_coefficient)
+                # sa.start(1000, 10, 0.9999)
+                print("Najlepszy cykl ma wagę: " + str(sa.best_cycle_cost))
+                print("Optymalny cykl: ")
+                sa.display_optimal_route()
+            else:
+                print("Nie wczytano żadnego grafu")
+            print_to_continue()
+
+        if choice == '7':
             if graph.file_name != "":
                 test(graph)
             else:
                 print("Nie wczytano żadnego grafu")
             print_to_continue()
 
-        if choice == '7':
+        if choice == '8':
             print_to_continue()
             clear()
             return
