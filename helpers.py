@@ -1,3 +1,6 @@
+from random import randint
+
+
 def parse_int(s, base=10, val=False):
     if s.isdigit():
         return int(s, base)
@@ -19,4 +22,8 @@ def get_all_ints_from_string(value):
     return array
 
 
-INF = 9999999
+INF = 999999999
+
+
+def generate_random_number():
+    return randint(0, INF)
