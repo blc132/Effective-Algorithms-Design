@@ -1,11 +1,11 @@
-from random import randint
+from random import randint, random
 
 import numpy
 import math
 from graph import Graph
 from collections import deque
 
-from helpers import INF
+from helpers import INF, generate_random_number
 
 
 class SimulatedAnnealing(Graph):
@@ -14,104 +14,100 @@ class SimulatedAnnealing(Graph):
     temperature_current: float
     temp_route: []
     final_route: []
+    temp_cost: int
 
     def __init__(self, graph):
         Graph.__init__(self, filename="", choice=-1)
-        self.temp_route = int[self.number_of_cities]
-        self.final_route = int[self.number_of_cities]
+
+        self.cost_matrix = graph.cost_matrix
+        self.file_name = graph.file_name
+        self.number_of_cities = graph.number_of_cities
+
+        self.temp_route = numpy.empty(self.number_of_cities, dtype=int)
+        self.final_route = numpy.empty(self.number_of_cities, dtype=int)
         self.temperature_coefficient = 0
-        self.temperature_current = 0;
+        self.temperature_current = 0
+        self.temp_cost = 0
 
-    def generate_probability(self, a, b):
-        probability_from_equation = math.pow(math.e, (-1 * (b - a)) / self.temperature_current)
-        normal_probability = randint()
+    def generate_probability(self):
 
-        if normal_probability < probability_from_equation:
-            return 1
-        return 0
+        value = math.pow(math.e, (self.best_cycle_cost // self.temperature_current))
 
-    def generate_permutation(self, array_of_indexes):
+        if value < 1.0:
+            return value
+        return 1.0
 
-        aux_matrix = int[self.number_of_cities]
+    def generate_random_probability(self):
+        return random()
 
-        for x in range(self.number_of_cities, 0, -1):
-            random_index = randint() % x
-            array_of_indexes[x - 1] = aux_matrix[random_index]
-            aux_matrix = aux_matrix[x - 1]
+    def generate_permutation(self):
+        first_index = randint(0, self.number_of_cities - 1)
 
-    def arithmetic_temperature_computation(self):
-        self.temperature_current -= self.temperature_coefficient
+        while True:
+            second_index = randint(0, self.number_of_cities - 1)
+            if first_index != second_index:
+                break
+
+        aux_number = self.final_route[first_index]
+
+        self.temp_route = self.final_route
+        self.temp_route[first_index] = self.temp_route[second_index]
+        self.temp_route[second_index] = aux_number
 
     def geometric_temperature_computation(self):
+        # print(self.temperature_current)
+        # print(self.temperature_coefficient)
         self.temperature_current *= self.temperature_coefficient
 
     def get_path_length(self, index_matrix):
-        weight_of_path: int
+        weight_of_path = 0
 
-        for x in range(self.number_of_cities, 0, -1):
-            weight_of_path += self.cost_matrix[index_matrix[x], index_matrix[0]]
+        for x in range(0, self.number_of_cities - 1):
+            # print("z " + str(x) + " do " + str(x + 1))
+            # print(self.cost_matrix[index_matrix[x], index_matrix[x + 1]])
+            weight_of_path += self.cost_matrix[index_matrix[x], index_matrix[x + 1]]
 
         weight_of_path += self.cost_matrix[index_matrix[self.number_of_cities - 1], index_matrix[0]]
-
+        print("weight of path")
+        # print(weight_of_path)
         return weight_of_path
 
-    def start_sa(self, temperature_max, temperature_min, temperature_coefficient):
-        global first_index
-        first_index: int
-        second_index: int
-        a: int
-        b: int
-        temporary_difference = 0
-        difference = 0
-        self.temperature_current = temperature_coefficient
+    def start(self, temperature_max, temperature_min, temperature_coefficient):
+
+        self.temperature_current = temperature_max
+        self.temperature_coefficient = temperature_coefficient
 
         for x in range(0, self.number_of_cities):
-            self.generate_permutation(self.final_route)
-            self.generate_permutation(self.temp_route)
+            self.final_route[x] = x
 
-            temporary_difference = abs(self.get_path_length(self.final_route) - self.get_path_length(self.temp_route))
+        self.temp_route = self.final_route
 
-            if temporary_difference > difference:
-                difference = temporary_difference
-
-        self.temperature_current = difference
-
-        self.generate_permutation(self.final_route)
-        a = self.get_path_length(self.final_route)
-        self.final_route = self.temp_route
-
+        self.best_cycle_cost = self.get_path_length(self.temp_route)
+        self.temp_cost = self.best_cycle_cost
+        x = 0
         while self.temperature_current > temperature_min:
-            first_index = randint() % self.number_of_cities
+            self.generate_permutation()
+            x += 1
+            print(x)
+            self.temp_cost = self.get_path_length(self.temp_route)
 
-        while True:
-            second_index = randint() % self.number_of_cities
-            if second_index != first_index:
-                break
+            if self.temp_cost < self.best_cycle_cost or self.generate_random_probability() < self.generate_probability():
+                self.best_cycle_cost = self.temp_cost
+                self.final_route = self.temp_route
 
-        self.temp_route[second_index] = self.final_route[first_index]
-        self.temp_route[first_index] = self.final_route[second_index]
+            self.geometric_temperature_computation()
 
-        b = self.get_path_length(self.temp_route)
+        for x in range(0, self.number_of_cities):
+            self.route.append(self.final_route[x])
+        self.route.append(self.final_route[0])
 
-        if b <= a | self.generate_probability(a, b) == 1:
-            a = b
-
-            if a <= self.best_cycle_cost:
-                self.best_cycle_cost = a
-                self.route.clear()
-
-                for x in range(0, self.number_of_cities):
-                    self.route.append([x])
-                self.route.append(self.temp_route[0])
-
-            self.final_route[first_index] = self.temp_route[first_index]
-            self.final_route[second_index] = self.temp_route[second_index]
-
-        else:
-            self.temp_route[first_index] = self.final_route[first_index]
-            self.temp_route[second_index] = self.final_route[second_index]
-
-        self.geometric_temperature_computation()
-
-
-
+    def display_optimal_route(self):
+        x = len(self.route) - 1
+        route = ""
+        while x >= 0:
+            if x > 0:
+                route += str(self.route[x]) + " -> "
+            else:
+                route += str(self.route[x])
+            x -= 1
+        print(route)
