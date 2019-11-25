@@ -2,7 +2,7 @@ import os
 from pandas import *
 import numpy
 
-from helpers import get_all_ints_from_string, INF
+from helpers.helpers import get_all_ints_from_string, INF
 
 
 class Graph:

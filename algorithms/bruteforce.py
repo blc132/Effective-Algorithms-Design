@@ -1,7 +1,7 @@
-from graph import Graph
+from graph.graph import Graph
 from collections import deque
 
-from helpers import INF
+from helpers.helpers import INF
 
 
 class BruteForce(Graph):

@@ -2,11 +2,8 @@ from random import randint, random
 
 import numpy
 import math
-from graph import Graph
+from graph.graph import Graph
 from collections import deque
-
-from helpers import INF, generate_random_number
-
 
 
 class SimulatedAnnealing(Graph):

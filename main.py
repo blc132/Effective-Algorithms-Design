@@ -1,12 +1,12 @@
 from timeit import default_timer as timer
 
-from bruteforce import BruteForce
-from dynamicprogramming import DynamicProgramming
-from graph import Graph
+from algorithms.bruteforce import BruteForce
+from algorithms.dynamicprogramming import DynamicProgramming
+from graph.graph import Graph
 from os import system, name
 import os
 
-from simulatedannealing import SimulatedAnnealing
+from algorithms.simulatedannealing import SimulatedAnnealing
 
 
 def clear():

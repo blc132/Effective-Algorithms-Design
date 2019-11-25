@@ -2,9 +2,9 @@ from os import listdir
 from os.path import isfile, join
 
 from timeit import default_timer as timer
-from graph import Graph
+from graph.graph import Graph
 from main import print_to_continue
-from simulatedannealing import SimulatedAnnealing
+from algorithms.simulatedannealing import SimulatedAnnealing
 
 temperature_coefficients = {
     0.99,
