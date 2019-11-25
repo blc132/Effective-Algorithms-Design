@@ -27,12 +27,29 @@ class Graph:
             self.parse_small_graph(self.absolute_directory, self.file_name)
         if choice == 1:
             self.parse_large_graph(self.absolute_directory, self.file_name)
+        if choice == 3:
+            self.parse_sa_graph(self.absolute_directory, self.file_name)
 
     def parse_small_graph(self, absolute_directory, file_name):
         absolute_directory = absolute_directory + "small\\" + file_name
         with open(absolute_directory) as file:
             line = file.readline()
             self.number_of_cities = get_all_ints_from_string(line)[0]
+            self.all_numbers = get_all_ints_from_string(file.read())
+        self.neighbourhood_matrix = numpy.zeros((self.number_of_cities, self.number_of_cities), dtype=bool)
+        self.cost_matrix = numpy.zeros((self.number_of_cities, self.number_of_cities), dtype=int)
+        self.create_cost_matrix()
+        self.set_infinity_on_inaccessible_places()
+
+    def parse_sa_graph(self, absolute_directory, file_name):
+        absolute_directory = absolute_directory + "sa_graphs\\" + file_name
+        with open(absolute_directory) as file:
+            line = file.readline()
+            while "DIMENSION" not in line:
+                line = file.readline()
+            self.number_of_cities = get_all_ints_from_string(line)[0]
+            while "EDGE_WEIGHT_SECTION" not in line:
+                line = file.readline()
             self.all_numbers = get_all_ints_from_string(file.read())
         self.neighbourhood_matrix = numpy.zeros((self.number_of_cities, self.number_of_cities), dtype=bool)
         self.cost_matrix = numpy.zeros((self.number_of_cities, self.number_of_cities), dtype=int)

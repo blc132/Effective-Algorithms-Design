@@ -22,8 +22,12 @@ def get_all_ints_from_string(value):
     return array
 
 
-INF = 999999999
+INF = 2147483647
 
 
 def generate_random_number():
     return randint(0, INF)
+
+
+# def convert_matrix_cost_to_points_array(matrix_cost, number_of_cities):
+

@@ -59,7 +59,7 @@ def test(graph):
                 the_file.write(graph.file_name + "\n" + time + "\n")
             print_to_continue()
 
-        if choice == '2':
+        if choice == '3':
             start = timer()
             for x in range(repeats):
                 dp = DynamicProgramming(graph)
@@ -103,7 +103,7 @@ def main():
             print(*os.listdir("./matrixes/small/"), sep='\n')
             print("-----------")
             file_name = input("Podaj nazwę pliku z małym grafem: ")
-            graph = Graph("tsp_10.txt", 0)
+            graph = Graph(file_name, 0)
             print("Wczytano graf z " + str(graph.number_of_cities) + " wierzchołkami\nAby kontynuwać wciśnij dowolny "
                                                                      "klawisz")
             choice = 0
@@ -152,14 +152,18 @@ def main():
 
         if choice == '6':
             # graph = Graph("tsp_10.txt", 0)
-            graph.display_cost_matrix()
             if graph.file_name != "":
-                t_0 = float(input("Temperatura początkowa wyżarzania: "))
-                t_min = float(input("Temperatura minimalna wyżarzania: "))
-                t_coefficient = float(input("Współczynnik wyżarzania z zakresu (0,1): "))
+                # t_0 = float(input("Temperatura początkowa wyżarzania: "))
+                # t_min = float(input("Temperatura minimalna wyżarzania: "))
+                # t_coefficient = float(input("Współczynnik wyżarzania z zakresu (0,1): "))
+
                 sa = SimulatedAnnealing(graph)
-                sa.start(t_0, t_min, t_coefficient)
-                # sa.start(1000, 10, 0.9999)
+                # sa.start(t_0, t_min, t_coefficient)
+                start = timer()
+                sa.start(1000, 1, 0.999)
+                end = timer()
+                time = format(end - start, '.8f')
+                print(time)
                 print("Najlepszy cykl ma wagę: " + str(sa.best_cycle_cost))
                 print("Optymalny cykl: ")
                 sa.display_optimal_route()

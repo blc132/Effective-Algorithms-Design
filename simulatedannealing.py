@@ -8,6 +8,7 @@ from collections import deque
 from helpers import INF, generate_random_number
 
 
+
 class SimulatedAnnealing(Graph):
     route = deque()
     temperature_coefficient: float
@@ -28,17 +29,25 @@ class SimulatedAnnealing(Graph):
         self.temperature_coefficient = 0
         self.temperature_current = 0
         self.temp_cost = 0
+        self.route.clear()
+
+    def accept_solution(self, delta_energy):
+        if delta_energy < 0:
+            return True
+        elif random() <= math.exp(-(delta_energy/self.temperature_current)):
+            return True
+        return False
 
     def generate_probability(self):
-
-        value = math.pow(math.e, (self.best_cycle_cost // self.temperature_current))
+        value = pow(math.e, (self.best_cycle_cost - self.temp_cost // self.temperature_current))
+        print("value: " + str(value))
+        print("e: " + str(math.e))
+        print("best_cycle_cost: " + str(self.best_cycle_cost))
+        print("temperature_current: " + str(self.temperature_current))
 
         if value < 1.0:
             return value
         return 1.0
-
-    def generate_random_probability(self):
-        return random()
 
     def generate_permutation(self):
         first_index = randint(0, self.number_of_cities - 1)
@@ -63,17 +72,12 @@ class SimulatedAnnealing(Graph):
         weight_of_path = 0
 
         for x in range(0, self.number_of_cities - 1):
-            # print("z " + str(x) + " do " + str(x + 1))
-            # print(self.cost_matrix[index_matrix[x], index_matrix[x + 1]])
             weight_of_path += self.cost_matrix[index_matrix[x], index_matrix[x + 1]]
 
         weight_of_path += self.cost_matrix[index_matrix[self.number_of_cities - 1], index_matrix[0]]
-        print("weight of path")
-        # print(weight_of_path)
         return weight_of_path
 
     def start(self, temperature_max, temperature_min, temperature_coefficient):
-
         self.temperature_current = temperature_max
         self.temperature_coefficient = temperature_coefficient
 
@@ -84,14 +88,14 @@ class SimulatedAnnealing(Graph):
 
         self.best_cycle_cost = self.get_path_length(self.temp_route)
         self.temp_cost = self.best_cycle_cost
-        x = 0
+
         while self.temperature_current > temperature_min:
             self.generate_permutation()
-            x += 1
-            print(x)
             self.temp_cost = self.get_path_length(self.temp_route)
 
-            if self.temp_cost < self.best_cycle_cost or self.generate_random_probability() < self.generate_probability():
+            delta = self.temp_cost - self.best_cycle_cost
+
+            if self.accept_solution(delta):
                 self.best_cycle_cost = self.temp_cost
                 self.final_route = self.temp_route
 
