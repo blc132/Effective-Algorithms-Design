@@ -1,12 +1,13 @@
 from timeit import default_timer as timer
 
-from algorithms.bruteforce import BruteForce
-from algorithms.dynamicprogramming import DynamicProgramming
-from graph.graph import Graph
+from bruteforce import BruteForce
+from dynamicprogramming import DynamicProgramming
+from genetic import Genetic
+from graph import Graph
 from os import system, name
 import os
 
-from algorithms.simulatedannealing import SimulatedAnnealing
+from simulatedannealing import SimulatedAnnealing
 
 
 def clear():
@@ -78,6 +79,9 @@ def test(graph):
 
 def main():
     graph = Graph()
+    number_of_generations: int
+    size_of_population: int
+    interruption_time: int
 
     while 1:
         clear()
@@ -91,11 +95,12 @@ def main():
         print("1. Wczytaj małą macierz grafu")
         print("2. Wczytaj dużą macierz grafu")
         print("3. Wyświetl macierz kosztów")
-        print("4. Rozwiąż problem komiwojażera za pomocą metody Brute Force")
-        print("5. Rozwiąż problem komiwojażera za pomocą metody programowania dynamicznego")
-        print("6. Rozwiąż problem komiwojażera za pomocą metody symulowanego wyżarzania")
-        print("7. Przeprowadź testy seryjne")
-        print("8. Zakończ działanie programu")
+        print("4. Brute Force")
+        print("5. Pprogramowanie dynamiczne")
+        print("6. Symulowane wyżarzanie")
+        print("7. Algorytm genetyczny")
+        print("8. Przeprowadź testy seryjne")
+        print("9. Zakończ działanie programu")
         choice = input("\nPodaj numer: ")
         if choice == '1':
             clear()
@@ -151,16 +156,13 @@ def main():
             print_to_continue()
 
         if choice == '6':
-            # graph = Graph("tsp_10.txt", 0)
             if graph.file_name != "":
-                # t_0 = float(input("Temperatura początkowa wyżarzania: "))
-                # t_min = float(input("Temperatura minimalna wyżarzania: "))
-                # t_coefficient = float(input("Współczynnik wyżarzania z zakresu (0,1): "))
-
+                t_0 = float(input("Temperatura początkowa wyżarzania: "))
+                t_min = float(input("Temperatura minimalna wyżarzania: "))
+                t_coefficient = float(input("Współczynnik wyżarzania z zakresu (0,1): "))
                 sa = SimulatedAnnealing(graph)
-                # sa.start(t_0, t_min, t_coefficient)
                 start = timer()
-                sa.start(1000, 1, 0.999)
+                sa.start(t_0, t_min, t_coefficient)
                 end = timer()
                 time = format(end - start, '.8f')
                 print(time)
@@ -173,12 +175,35 @@ def main():
 
         if choice == '7':
             if graph.file_name != "":
-                test(graph)
+                size_of_population = int(input("Podaj początkową liczebność populacji: "))
+                number_of_generations = int(input("Podaj liczbę pokoleń, która ma się urodzić: "))
+                cross_probability = float(input("Podaj prawdopodobieństwo krzyżowania: "))
+                mutation_probability = float(input("Podaj prawdopodobieństwo mutacji: "))
+                # size_of_population = 10
+                # number_of_generations = 150
+                # cross_probability = 0.6
+                # mutation_probability = 0.2
+                gen = Genetic(graph)
+                start = timer()
+                gen.start(size_of_population, number_of_generations, cross_probability, mutation_probability)
+                end = timer()
+                time = format(end - start, '.8f')
+                print(time)
+                print("Najlepszy cykl ma wagę: " + str(gen.best_cycle_cost))
+                print("Optymalny cykl: ")
+                gen.display_optimal_route()
             else:
                 print("Nie wczytano żadnego grafu")
             print_to_continue()
 
         if choice == '8':
+            if graph.file_name != "":
+                test(graph)
+            else:
+                print("Nie wczytano żadnego grafu")
+            print_to_continue()
+
+        if choice == '9':
             print_to_continue()
             clear()
             return
