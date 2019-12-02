@@ -2,8 +2,10 @@ from random import randint, random
 
 import numpy
 import math
-from graph.graph import Graph
+from graph import Graph
 from collections import deque
+
+from helpers import generate_random_number, INF, copy_array
 
 
 class SimulatedAnnealing(Graph):
@@ -31,20 +33,16 @@ class SimulatedAnnealing(Graph):
     def accept_solution(self, delta_energy):
         if delta_energy < 0:
             return True
-        elif random() <= math.exp(-(delta_energy/self.temperature_current)):
+        elif random() <= math.exp(-(delta_energy / self.temperature_current)):
             return True
         return False
 
     def generate_probability(self):
-        value = pow(math.e, (self.best_cycle_cost - self.temp_cost // self.temperature_current))
-        print("value: " + str(value))
-        print("e: " + str(math.e))
-        print("best_cycle_cost: " + str(self.best_cycle_cost))
-        print("temperature_current: " + str(self.temperature_current))
+        pow_value = -(self.temp_cost - self.best_cycle_cost) / self.temperature_current
+        return pow(math.e, pow_value)
 
-        if value < 1.0:
-            return value
-        return 1.0
+    def generate_random_probability(self):
+        return generate_random_number() / INF
 
     def generate_permutation(self):
         first_index = randint(0, self.number_of_cities - 1)
@@ -56,7 +54,8 @@ class SimulatedAnnealing(Graph):
 
         aux_number = self.final_route[first_index]
 
-        self.temp_route = self.final_route
+        # self.temp_route = self.final_route
+        copy_array(self.final_route, self.temp_route)
         self.temp_route[first_index] = self.temp_route[second_index]
         self.temp_route[second_index] = aux_number
 
@@ -64,6 +63,9 @@ class SimulatedAnnealing(Graph):
         # print(self.temperature_current)
         # print(self.temperature_coefficient)
         self.temperature_current *= self.temperature_coefficient
+
+    def arithmetic_temperature_computation(self):
+        self.temperature_current -= self.temperature_coefficient
 
     def get_path_length(self, index_matrix):
         weight_of_path = 0
@@ -81,8 +83,7 @@ class SimulatedAnnealing(Graph):
         for x in range(0, self.number_of_cities):
             self.final_route[x] = x
 
-        self.temp_route = self.final_route
-
+        copy_array(self.final_route, self.temp_route)
         self.best_cycle_cost = self.get_path_length(self.temp_route)
         self.temp_cost = self.best_cycle_cost
 
@@ -90,12 +91,10 @@ class SimulatedAnnealing(Graph):
             self.generate_permutation()
             self.temp_cost = self.get_path_length(self.temp_route)
 
-            delta = self.temp_cost - self.best_cycle_cost
-
-            if self.accept_solution(delta):
+            if self.temp_cost < self.best_cycle_cost or (
+                    self.generate_random_probability() < self.generate_probability()):
                 self.best_cycle_cost = self.temp_cost
-                self.final_route = self.temp_route
-
+                copy_array(self.temp_route, self.final_route)
             self.geometric_temperature_computation()
 
         for x in range(0, self.number_of_cities):

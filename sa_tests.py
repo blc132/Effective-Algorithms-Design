@@ -2,23 +2,17 @@ from os import listdir
 from os.path import isfile, join
 
 from timeit import default_timer as timer
-from graph.graph import Graph
+from graph import Graph
 from main import print_to_continue
-from algorithms.simulatedannealing import SimulatedAnnealing
+from simulatedannealing import SimulatedAnnealing
 
 temperature_coefficients = {
+    0.9,
     0.99,
-    0.995,
-    0.999,
-    0.9995,
-    0.9999,
-    0.99995,
 }
 
 temperature_maximums = [
     1000,
-    10000,
-    100000,
 ]
 
 temperature_minimums = [
@@ -42,7 +36,7 @@ def test(repeats):
                         start = timer()
                         sa.start(max, min, tc)
                         end = timer()
-                        time = format((end - start) / repeats, '.8f')
+                        time = format((end - start), '.8f')
                         print(str(min) + "\t" + str(max) + "\t" + str(tc) + "\t" + time + "\t" + str(sa.best_cycle_cost) + "\n")
                         with open("./measurements/" + f.rsplit(".", 1)[0] + ".txt", 'a+') as the_file:
                             the_file.write(str(min) + "\t" + str(max) + "\t" + str(tc) + "\t" + time + "\t" + str(sa.best_cycle_cost) + "\n")
