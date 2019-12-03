@@ -6,38 +6,29 @@ from graph import Graph
 from main import print_to_continue
 from genetic import Genetic
 
-# (size_of_population, number_of_generations, cross_probability, mutation_probability)
 generations = {
-    100,
-    500,
-    1000,
+    2000,
 }
 
 populations = [
-    100,
-    500,
-    1000,
+    50,
 ]
 
 cross_probs = [
-    0.3,
     0.6,
-    0.8,
 ]
 
 mutat_probs = [
-    0.05,
-    0.10,
     0.15
 ]
 
 
 def test(repeats):
-    files = [f for f in listdir("./matrixes/ga_graphs/") if isfile(join("./matrixes/ga_graphs/", f))]
+    files = [f for f in listdir("./matrixes/small/") if isfile(join("./matrixes/small/", f))]
 
     print(files)
     for f in files:
-        graph = Graph(f, 3)
+        graph = Graph(f, 0)
         print("Wczytano graf z " + str(graph.number_of_cities) + " wierzchołkami")
         for generation in generations:
             for population in populations:
@@ -59,8 +50,7 @@ def test(repeats):
 
 
 def main():
-    print("Hello World!")
-    test(5)
+    test(100)
 
 
 if __name__ == "__main__":

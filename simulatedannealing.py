@@ -1,4 +1,4 @@
-from random import randint, random
+from random import randint
 
 import numpy
 import math
@@ -30,13 +30,6 @@ class SimulatedAnnealing(Graph):
         self.temp_cost = 0
         self.route.clear()
 
-    def accept_solution(self, delta_energy):
-        if delta_energy < 0:
-            return True
-        elif random() <= math.exp(-(delta_energy / self.temperature_current)):
-            return True
-        return False
-
     def generate_probability(self):
         pow_value = -(self.temp_cost - self.best_cycle_cost) / self.temperature_current
         return pow(math.e, pow_value)
@@ -53,19 +46,12 @@ class SimulatedAnnealing(Graph):
                 break
 
         aux_number = self.final_route[first_index]
-
-        # self.temp_route = self.final_route
         copy_array(self.final_route, self.temp_route)
         self.temp_route[first_index] = self.temp_route[second_index]
         self.temp_route[second_index] = aux_number
 
     def geometric_temperature_computation(self):
-        # print(self.temperature_current)
-        # print(self.temperature_coefficient)
         self.temperature_current *= self.temperature_coefficient
-
-    def arithmetic_temperature_computation(self):
-        self.temperature_current -= self.temperature_coefficient
 
     def get_path_length(self, index_matrix):
         weight_of_path = 0

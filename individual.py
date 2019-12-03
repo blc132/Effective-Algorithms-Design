@@ -20,13 +20,6 @@ class Individual:
             self.path_cost = path_cost
             self.path = np.empty(len(path), dtype=int)
             copy_array(path, self.path)
-            # self.path = path
-
-    # def __init__(self, individual):
-    #     self.path = int[len(individual.path)]
-    #     self.is_parent = individual.is_parent
-    #     self.path_cost = individual.path_cost
-    #     self.path = individual.path
 
     def __eq__(self, obj):
         return obj is None and np.array_equal(obj.path,

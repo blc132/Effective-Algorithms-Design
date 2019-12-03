@@ -37,9 +37,11 @@ def test(repeats):
                         sa.start(max, min, tc)
                         end = timer()
                         time = format((end - start), '.8f')
-                        print(str(min) + "\t" + str(max) + "\t" + str(tc) + "\t" + time + "\t" + str(sa.best_cycle_cost) + "\n")
+                        print(str(min) + "\t" + str(max) + "\t" + str(tc) + "\t" + time + "\t" + str(
+                            sa.best_cycle_cost) + "\n")
                         with open("./measurements/" + f.rsplit(".", 1)[0] + ".txt", 'a+') as the_file:
-                            the_file.write(str(min) + "\t" + str(max) + "\t" + str(tc) + "\t" + time + "\t" + str(sa.best_cycle_cost) + "\n")
+                            the_file.write(str(min) + "\t" + str(max) + "\t" + str(tc) + "\t" + time + "\t" + str(
+                                sa.best_cycle_cost) + "\n")
     print_to_continue()
 
 

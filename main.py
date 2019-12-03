@@ -79,9 +79,6 @@ def test(graph):
 
 def main():
     graph = Graph()
-    number_of_generations: int
-    size_of_population: int
-    interruption_time: int
 
     while 1:
         clear()

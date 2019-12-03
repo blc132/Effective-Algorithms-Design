@@ -31,20 +31,20 @@ class Genetic(Graph):
         self.mutation_probability = mutation_probability
         self.create_population()
         self.number_of_generations = 0
+        number_of_childs_to_born = 50
 
+        #pętla główna algorytmu
         while self.number_of_generations <= number_of_generations:
-            population_count = len(self.population)
-            number_of_childs_to_born = 50
-
             for x in range(number_of_childs_to_born):
                 while True:
-                    first_parent = Individual(individual=self.population[random.randint(0, population_count - 1)])
-                    second_parent = Individual(individual=self.population[random.randint(0, population_count - 1)])
+                    first_parent = Individual(individual=self.population[random.randint(0, len(self.population) - 1)])
+                    second_parent = Individual(individual=self.population[random.randint(0, len(self.population) - 1)])
                     if not (first_parent == second_parent and first_parent.is_parent and second_parent.is_parent):
                         break
 
                 temp_rand = random.uniform(0, 1)
                 if self.cross_probability >= temp_rand:
+
                     child = Individual(individual=self.pmx_child_creation(first_parent, second_parent))
                     self.population.append(child)
 
@@ -101,14 +101,10 @@ class Genetic(Graph):
         individual.path_cost = self.get_path_length(individual.path)
 
     def pmx_child_creation(self, first_parent, second_parent):
-        # print("PMX")
         visited_cities = numpy.full(self.number_of_cities, False, dtype=bool)
         path_for_children = numpy.empty(self.number_of_cities, dtype=int)
 
-        # parent_choice = 2
         parent_choice = random.randint(1, 2)
-
-        # print("parent: " + str(parent_choice))
 
         first_index_of_cut_point = random.randint(0, self.number_of_cities - 1)
         while self.number_of_cities - first_index_of_cut_point <= 2:
@@ -118,46 +114,38 @@ class Genetic(Graph):
         first_iterator = first_index_of_cut_point
         second_iterator = second_index_of_cut_point - first_index_of_cut_point
 
-        # print("first: " + str(first_index_of_cut_point))
-        # print("second: " + str(second_index_of_cut_point))
-
         if parent_choice == 1:
             for x in range(second_index_of_cut_point - first_index_of_cut_point):
                 visited_cities[first_parent.path[first_iterator]] = True
                 path_for_children[x] = first_parent.path[first_iterator]
-                # print(path_for_children[x])
                 first_iterator += 1
 
             for x in range(self.number_of_cities):
                 if not visited_cities[second_parent.path[x]]:
                     visited_cities[second_parent.path[x]] = True
                     path_for_children[second_iterator] = second_parent.path[x]
-                    # print(path_for_children[x])
                     second_iterator += 1
         else:
             for x in range(second_index_of_cut_point - first_index_of_cut_point):
                 visited_cities[second_parent.path[first_iterator]] = True
                 path_for_children[x] = second_parent.path[first_iterator]
                 first_iterator += 1
-                # print(path_for_children[x])
 
             for x in range(self.number_of_cities):
                 if not visited_cities[first_parent.path[x]]:
                     visited_cities[first_parent.path[x]] = True
                     path_for_children[second_iterator] = first_parent.path[x]
                     second_iterator += 1
-                    # print(path_for_children[x])
 
-        # print(path_for_children)
         cost_of_childs_path = self.get_path_length(path_for_children)
-        # print(cost_of_childs_path)
-        # if cost_of_childs_path >= 20000 or cost_of_childs_path <= -20000:
-        #     input()
         return Individual(path=path_for_children, path_cost=cost_of_childs_path)
 
+    #metoda do selekcji osobników
     def population_selection(self):
+        #posortuj po długości ścieżki
         self.population.sort()
 
+        #usuwaj ostatnich osobników tak długo aż rozmiar populacji będzie dobry
         while len(self.population) > self.size_of_population * 0.95:
             self.population.pop()
 

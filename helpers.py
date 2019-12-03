@@ -31,6 +31,4 @@ def generate_random_number():
 
 def copy_array(source, destination):
     for i in range(0, len(source)):
-        destination[i] = source[i];
-
-    # def convert_matrix_cost_to_points_array(matrix_cost, number_of_cities):
+        destination[i] = source[i]
