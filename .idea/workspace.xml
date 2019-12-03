@@ -3,10 +3,169 @@
   <component name="ChangeListManager">
     <list default="true" id="8e05fc0b-e382-4a4a-a76d-49782a61f53f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bruteforce.py" beforeDir="false" afterPath="$PROJECT_DIR$/bruteforce.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dynamicprogramming.py" beforeDir="false" afterPath="$PROJECT_DIR$/dynamicprogramming.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bf_measurement.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bf_measurment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dp_measurement.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ga_tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/ga_tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/genetic.py" beforeDir="false" afterPath="$PROJECT_DIR$/genetic.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/graph.py" beforeDir="false" afterPath="$PROJECT_DIR$/graph.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/individual.py" beforeDir="false" afterPath="$PROJECT_DIR$/individual.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/ga_graphs/bays29.tsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/ga_graphs/br17.atsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/ga_graphs/ftv170.atsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/ga_graphs/ftv44.atsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/ga_graphs/kro124.atsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/ga_graphs/rbg443.atsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/graphs/berlin52.tsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/graphs/bier127.tsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/graphs/br10.atsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/graphs/br11.atsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/graphs/br12.atsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/graphs/br13.atsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/graphs/br14.atsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/graphs/br15.atsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/graphs/br16.atsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/graphs/br17.atsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/graphs/br5.atsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/graphs/br6.atsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/graphs/br7.atsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/graphs/br8.atsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/graphs/br9.atsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/graphs/d10.tsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/graphs/d11.tsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/graphs/d12.tsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/graphs/d13.tsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/graphs/d14.tsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/graphs/d15.tsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/graphs/d198.tsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/graphs/d20.tsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/graphs/d23.tsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/graphs/d5.tsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/graphs/d6.tsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/graphs/d7.tsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/graphs/d8.tsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/graphs/d9.tsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/graphs/ftv170.atsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/graphs/ftv47.atsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/graphs/gr10.tsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/graphs/gr11.tsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/graphs/gr12.tsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/graphs/gr13.tsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/graphs/gr14.tsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/graphs/gr15.tsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/graphs/gr16.tsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/graphs/gr17.tsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/graphs/gr229.tsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/graphs/gr48.tsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/graphs/gr5.tsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/graphs/gr6.tsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/graphs/gr7.tsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/graphs/gr8.tsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/graphs/gr9.tsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/graphs/kro124.atsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/graphs/pr144.tsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/graphs/t_12.tsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/graphs/tsp_12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/large/bays.tsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/large/br17.atsp" beforeDir="false" afterPath="$PROJECT_DIR$/matrixes/large/br17.atsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/large/ft53.atsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/large/ft70.atsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/large/ftv170.atsp" beforeDir="false" afterPath="$PROJECT_DIR$/matrixes/large/ftv170.atsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/large/ftv33.atsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/large/ftv35.atsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/large/ftv38.atsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/large/ftv47.atsp" beforeDir="false" afterPath="$PROJECT_DIR$/matrixes/large/ftv47.atsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/large/ftv55.atsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/large/ftv64.atsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/large/ftv70.atsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/large/gr17.tsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/large/kro124p.atsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/large/p43.atsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/large/rbg323.atsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/large/rbg358.atsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/large/ry48p.atsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/sa_graphs/bays29.tsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/sa_graphs/br17.atsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/sa_graphs/ftv170.atsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/sa_graphs/ftv44.atsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/sa_graphs/ftv47.atsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/sa_graphs/kro124.atsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/sa_graphs/rbg403.atsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/sa_graphs/rbg443.atsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrixes/small/tsp_6_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/ga/bays29.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/ga/br17.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/ga/ftv170.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/ga/ftv44.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/ga/kro124.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/ga/rbg443.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/ga/tsp_10.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/ga/tsp_11.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/ga/tsp_12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/ga/tsp_13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/ga/tsp_14.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/ga/tsp_15.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/ga/tsp_16.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/ga/tsp_17.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/ga/tsp_18.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/ga/tsp_19.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/ga/tsp_20.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/ga/tsp_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/ga/tsp_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/ga/tsp_6_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/ga/tsp_6_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/ga/tsp_7.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/ga/tsp_8.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/ga/tsp_9.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/sa/Nowy folder/bays29.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/sa/Nowy folder/br17.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/sa/_old/bays29.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/sa/_old/br17.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/sa/_old/ftv170.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/sa/_old/ftv44.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/sa/_old/ftv47.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/sa/_old/kro124.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/sa/_old/rbg403.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/sa/bays29.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/sa/best_bays29.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/sa/best_br_17.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/sa/best_ftv44.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/sa/br17.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/sa/ftv170.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/sa/ftv44.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/sa/ftv47.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/sa/kro124.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/sa/rbg403.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/sa/rbg443.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/sa/tsp_10.txt" beforeDir="false" afterPath="$PROJECT_DIR$/measurements/sa/tsp_10.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/sa/tsp_11.txt" beforeDir="false" afterPath="$PROJECT_DIR$/measurements/sa/tsp_11.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/sa/tsp_12.txt" beforeDir="false" afterPath="$PROJECT_DIR$/measurements/sa/tsp_12.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/sa/tsp_13.txt" beforeDir="false" afterPath="$PROJECT_DIR$/measurements/sa/tsp_13.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/sa/tsp_14.txt" beforeDir="false" afterPath="$PROJECT_DIR$/measurements/sa/tsp_14.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/sa/tsp_15.txt" beforeDir="false" afterPath="$PROJECT_DIR$/measurements/sa/tsp_15.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/sa/tsp_16.txt" beforeDir="false" afterPath="$PROJECT_DIR$/measurements/sa/tsp_16.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/sa/tsp_17.txt" beforeDir="false" afterPath="$PROJECT_DIR$/measurements/sa/tsp_17.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/sa/tsp_18.txt" beforeDir="false" afterPath="$PROJECT_DIR$/measurements/sa/tsp_18.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/sa/tsp_19.txt" beforeDir="false" afterPath="$PROJECT_DIR$/measurements/sa/tsp_19.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/sa/tsp_20.txt" beforeDir="false" afterPath="$PROJECT_DIR$/measurements/sa/tsp_20.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/sa/tsp_3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/measurements/sa/tsp_3.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/sa/tsp_4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/measurements/sa/tsp_4.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/sa/tsp_6_1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/measurements/sa/tsp_6_1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/sa/tsp_6_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/sa/tsp_7.txt" beforeDir="false" afterPath="$PROJECT_DIR$/measurements/sa/tsp_7.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/sa/tsp_8.txt" beforeDir="false" afterPath="$PROJECT_DIR$/measurements/sa/tsp_8.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements/sa/tsp_9.txt" beforeDir="false" afterPath="$PROJECT_DIR$/measurements/sa/tsp_9.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sa_measurement/bays29.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sa_measurement/br17.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sa_measurement/ftv170.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sa_measurement/ftv44.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sa_measurement/ftv47.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sa_measurement/kro124.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sa_measurement/rbg403.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sa_measurement/rbg443.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sa_tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/sa_tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simulatedannealing.py" beforeDir="false" afterPath="$PROJECT_DIR$/simulatedannealing.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,11 +175,68 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/sa_tests.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="612">
+              <caret line="51" column="4" selection-start-line="51" selection-start-column="4" selection-end-line="51" selection-end-column="4" />
+              <folding>
+                <element signature="e#0#22#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ga_tests.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="385">
+              <caret line="54" column="4" selection-start-line="54" selection-start-column="4" selection-end-line="54" selection-end-column="4" />
+              <folding>
+                <element signature="e#0#22#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/graph.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="663">
-              <caret line="39" column="50" selection-start-line="39" selection-start-column="50" selection-end-line="39" selection-end-column="50" />
+            <state>
+              <caret selection-end-line="1" selection-end-column="10" />
+              <folding>
+                <element signature="e#0#4#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" selection-start-line="7" selection-end-line="7" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/genetic.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1394">
+              <caret line="112" column="36" selection-start-line="112" selection-start-column="36" selection-end-line="112" selection-end-column="36" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/individual.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" selection-start-line="11" selection-end-line="11" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -29,12 +245,21 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dynamicprogramming.py">
+        <entry file="file://$PROJECT_DIR$/helpers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-583">
-              <caret line="18" selection-start-line="18" selection-end-line="18" />
+            <state relative-caret-position="561">
+              <caret line="33" column="34" selection-start-line="33" selection-start-column="34" selection-end-line="33" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/simulatedannealing.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="578">
+              <caret line="34" column="19" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="19" />
               <folding>
-                <element signature="e#0#12#0" expanded="true" />
+                <element signature="e#0#26#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -43,31 +268,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bruteforce.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="16" selection-start-line="16" selection-end-line="16" />
+            <state relative-caret-position="714">
+              <caret line="42" column="13" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/helpers.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/main.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2139">
-              <caret line="147" column="23" selection-start-line="147" selection-start-column="23" selection-end-line="147" selection-end-column="23" />
-              <folding>
-                <element signature="e#0#32#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -84,28 +288,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>nump</find>
-      <find>choice</find>
-      <find>Macierz</find>
-      <find>Maci</find>
-      <find>macierz</find>
-      <find>all_num</find>
-      <find>|</find>
-      <find>inf`</find>
-      <find>inf</find>
-      <find>all_numbers</find>
-      <find>Wczytano graf z</find>
-      <find>-1</find>
-      <find>Wczytano</find>
-      <find>count</find>
-      <find>aux_route</find>
+      <find>generate_permutation</find>
+      <find>randint</find>
+      <find>68</find>
+      <find>self.generate_random_number()</find>
+      <find>sub_path_indexes</find>
+      <find>generate_probability</find>
+      <find>INF</find>
+      <find>WEI</find>
+      <find>parse_sa_graph</find>
+      <find>WE</find>
+      <find>best</find>
+      <find>self.temp_route = self.final_route</find>
+      <find>_route =</find>
+      <find>//</find>
+      <find>temperat</find>
+      <find>coef</find>
+      <find>gett</find>
+      <find>Individual(</find>
+      <find>81</find>
+      <find>displa</find>
+      <find>insert</find>
+      <find>14</find>
+      <find>pmx</find>
+      <find>cross_probability</find>
       <find>print</find>
-      <find>parse_numbers_to_matrix</find>
-      <find>ptype</find>
-      <find>neighbourhood_matrix</find>
-      <find>lets_say_its_inf</find>
-      <find>lets</find>
-      <find>timer</find>
+      <find>final_route</find>
+      <find>is_parent</find>
+      <find>absol</find>
+      <find>abs</find>
+      <find>gra</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -118,18 +330,29 @@
         <option value="$PROJECT_DIR$/stack.py" />
         <option value="$PROJECT_DIR$/travel.py" />
         <option value="$PROJECT_DIR$/matrixes/helpers.py" />
-        <option value="$PROJECT_DIR$/helpers.py" />
-        <option value="$PROJECT_DIR$/graph.py" />
-        <option value="$PROJECT_DIR$/dynamicprogramming.py" />
         <option value="$PROJECT_DIR$/bruteforce.py" />
+        <option value="$PROJECT_DIR$/dynamicprogramming.py" />
+        <option value="$PROJECT_DIR$/visualize.py" />
+        <option value="$PROJECT_DIR$/algorithms/genetic.py" />
+        <option value="$PROJECT_DIR$/algorithms/individual.py" />
+        <option value="$PROJECT_DIR$/tests/sa_tests.py" />
+        <option value="$PROJECT_DIR$/plots_generator.py" />
+        <option value="$PROJECT_DIR$/helpers.py" />
+        <option value="$PROJECT_DIR$/genetic.py" />
+        <option value="$PROJECT_DIR$/individual.py" />
+        <option value="$PROJECT_DIR$/simulatedannealing.py" />
         <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/graph.py" />
+        <option value="$PROJECT_DIR$/ga_tests.py" />
+        <option value="$PROJECT_DIR$/sa_tests.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-7" />
-    <option name="width" value="779" />
-    <option name="height" value="829" />
+    <option name="x" value="469" />
+    <option name="y" value="186" />
+    <option name="width" value="656" />
+    <option name="height" value="447" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -158,10 +381,15 @@
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Programowanie\Effective-Algorithms-Design\matrixes\sa_graphs" />
       <recent name="D:\Programowanie\Effective-Algorithms-Design" />
+      <recent name="D:\Programowanie\Effective-Algorithms-Design\measurements" />
+      <recent name="D:\Programowanie\Effective-Algorithms-Design\graph" />
+      <recent name="D:\Programowanie\Effective-Algorithms-Design\helpers" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -176,7 +404,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.sa_tests">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Effective-Algorithms-Design" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -198,8 +426,30 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="sa_tests" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Effective-Algorithms-Design" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="D:\Programowanie\Effective-Algorithms-Design\sa_tests.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.sa_tests" />
         <item itemvalue="Python.main" />
       </list>
     </recent_temporary>
@@ -230,20 +480,20 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.087987356" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17281349" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32904148" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32502708" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.29035753" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32390383" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3779972" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32936078" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32936078" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4993395" weight="0.17334779" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4993395" weight="0.32390383" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5006605" side_tool="true" weight="0.32956153" />
-      <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.4993395" weight="0.32936078" />
+      <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.4993395" weight="0.17009751" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -254,8 +504,8 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/dynamicprogramming.py</url>
-          <line>33</line>
-          <option name="timeStamp" value="7" />
+          <line>41</line>
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -264,49 +514,124 @@
     <entry file="file://$PROJECT_DIR$/travel.cs.py" />
     <entry file="file://$PROJECT_DIR$/travel.py" />
     <entry file="file://$PROJECT_DIR$/stack.py" />
-    <entry file="file://$PROJECT_DIR$/graph.py">
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/timeit.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="39" column="50" selection-start-line="39" selection-start-column="50" selection-end-line="39" selection-end-column="50" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="227">
+          <caret line="60" selection-start-line="60" selection-end-line="60" selection-end-column="13" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/visualize.py" />
     <entry file="file://$PROJECT_DIR$/dynamicprogramming.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-583">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        <state relative-caret-position="374">
+          <caret line="27" column="26" selection-start-line="27" selection-end-line="28" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bruteforce.py">
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/random.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        <state relative-caret-position="3604">
+          <caret line="221" selection-start-line="221" selection-end-line="221" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/matrixes/sa_graphs/br17.atsp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/matrixes/sa_graphs/ftv47.atsp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sa_measurement/br17.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sa_measurement/bays29.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plots_generator.py" />
+    <entry file="file://$PROJECT_DIR$/simulatedannealing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="34" column="19" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="19" />
           <folding>
-            <element signature="e#0#23#0" expanded="true" />
+            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/helpers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
+        <state relative-caret-position="561">
+          <caret line="33" column="34" selection-start-line="33" selection-start-column="34" selection-end-line="33" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/individual.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/genetic.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1394">
+          <caret line="112" column="36" selection-start-line="112" selection-start-column="36" selection-end-line="112" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bruteforce.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="714">
+          <caret line="42" column="13" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2139">
-          <caret line="147" column="23" selection-start-line="147" selection-start-column="23" selection-end-line="147" selection-end-column="23" />
+        <state relative-caret-position="119">
+          <caret line="7" selection-start-line="7" selection-end-line="7" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/graph.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="1" selection-end-column="10" />
           <folding>
-            <element signature="e#0#32#0" expanded="true" />
+            <element signature="e#0#4#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ga_tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="385">
+          <caret line="54" column="4" selection-start-line="54" selection-start-column="4" selection-end-line="54" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sa_tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="51" column="4" selection-start-line="51" selection-start-column="4" selection-end-line="51" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
           </folding>
         </state>
       </provider>
