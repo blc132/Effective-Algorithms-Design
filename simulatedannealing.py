@@ -1,7 +1,7 @@
 from random import randint
 
-import numpy
-import math
+from numpy import empty
+from math import e
 from graph import Graph
 from collections import deque
 
@@ -23,8 +23,8 @@ class SimulatedAnnealing(Graph):
         self.file_name = graph.file_name
         self.number_of_cities = graph.number_of_cities
 
-        self.temp_route = numpy.empty(self.number_of_cities, dtype=int)
-        self.final_route = numpy.empty(self.number_of_cities, dtype=int)
+        self.temp_route = empty(self.number_of_cities, dtype=int)
+        self.final_route = empty(self.number_of_cities, dtype=int)
         self.temperature_coefficient = 0
         self.temperature_current = 0
         self.temp_cost = 0
@@ -32,7 +32,7 @@ class SimulatedAnnealing(Graph):
 
     def generate_probability(self):
         pow_value = -(self.temp_cost - self.best_cycle_cost) / self.temperature_current
-        return pow(math.e, pow_value)
+        return pow(e, pow_value)
 
     def generate_random_probability(self):
         return generate_random_number() / INF

@@ -1,11 +1,11 @@
+import sys
 from timeit import default_timer as timer
 
 from bruteforce import BruteForce
 from dynamicprogramming import DynamicProgramming
 from genetic import Genetic
 from graph import Graph
-from os import system, name
-import os
+from os import system, name, listdir, path
 
 from simulatedannealing import SimulatedAnnealing
 
@@ -21,6 +21,13 @@ def print_to_continue():
     input("Aby kontynuować wciśnij dowolny klawisz")
 
 
+absolute_directory = path.dirname(path.realpath(__file__))
+
+
+def get_script_path():
+    return path.dirname(path.realpath(sys.argv[0]))
+
+
 def test(graph):
 
     clear()
@@ -31,8 +38,7 @@ def test(graph):
         print("Możliwości do wyboru:\n")
         print("1. Brute Force")
         print("2. Programowanie dynamiczne")
-        print("3. Symulowane wyżarzanie")
-        print("4. Powrót do głównego menu")
+        print("3. Powrót do głównego menu")
         choice = input("\nPodaj numer: ")
         if choice == '1':
             start = timer()
@@ -43,7 +49,7 @@ def test(graph):
             end = timer()
             time = format((end - start) / repeats, '.8f')
             print(time)
-            with open('bf_measurement.txt', 'a+') as the_file:
+            with open(get_script_path() + '/measurements/bf_measurement.txt', 'a+') as the_file:
                 the_file.write(graph.file_name + "\n" + time + "\n")
             print_to_continue()
 
@@ -56,24 +62,11 @@ def test(graph):
             end = timer()
             time = format((end - start) / repeats, '.8f')
             print(time)
-            with open('dp_measurement.txt', 'a+') as the_file:
+            with open(get_script_path() + '/measurements/dp_measurement.txt', 'a+') as the_file:
                 the_file.write(graph.file_name + "\n" + time + "\n")
             print_to_continue()
 
         if choice == '3':
-            start = timer()
-            for x in range(repeats):
-                dp = DynamicProgramming(graph)
-                dp.start(0)
-
-            end = timer()
-            time = format((end - start) / repeats, '.8f')
-            print(time)
-            with open('dp_measurement.txt', 'a+') as the_file:
-                the_file.write(graph.file_name + "\n" + time + "\n")
-            print_to_continue()
-
-        if choice == '4':
             return
 
 
@@ -93,7 +86,7 @@ def main():
         print("2. Wczytaj dużą macierz grafu")
         print("3. Wyświetl macierz kosztów")
         print("4. Brute Force")
-        print("5. Pprogramowanie dynamiczne")
+        print("5. Programowanie dynamiczne")
         print("6. Symulowane wyżarzanie")
         print("7. Algorytm genetyczny")
         print("8. Przeprowadź testy seryjne")
@@ -102,7 +95,7 @@ def main():
         if choice == '1':
             clear()
             print("Lista dostępnych plików:\n-----------")
-            print(*os.listdir("./matrixes/small/"), sep='\n')
+            print(*listdir(get_script_path() + "/matrixes/small/"), sep='\n')
             print("-----------")
             file_name = input("Podaj nazwę pliku z małym grafem: ")
             graph = Graph(file_name, 0)
@@ -114,7 +107,7 @@ def main():
         if choice == '2':
             clear()
             print("Podaj nazwę pliku z dużym grafem")
-            print(*os.listdir("./matrixes/large/"), sep='\n')
+            print(*listdir(get_script_path() + "/matrixes/large/"), sep='\n')
             file_name = input()
             graph = Graph(file_name, 1)
             print("Wczytano graf z " + str(graph.number_of_cities) + " wierzchołkami")

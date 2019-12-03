@@ -1,4 +1,4 @@
-import random
+from random import  randint, uniform
 
 import numpy
 from graph import Graph
@@ -37,12 +37,12 @@ class Genetic(Graph):
         while self.number_of_generations <= number_of_generations:
             for x in range(number_of_childs_to_born):
                 while True:
-                    first_parent = Individual(individual=self.population[random.randint(0, len(self.population) - 1)])
-                    second_parent = Individual(individual=self.population[random.randint(0, len(self.population) - 1)])
+                    first_parent = Individual(individual=self.population[randint(0, len(self.population) - 1)])
+                    second_parent = Individual(individual=self.population[randint(0, len(self.population) - 1)])
                     if not (first_parent == second_parent and first_parent.is_parent and second_parent.is_parent):
                         break
 
-                temp_rand = random.uniform(0, 1)
+                temp_rand = uniform(0, 1)
                 if self.cross_probability >= temp_rand:
 
                     child = Individual(individual=self.pmx_child_creation(first_parent, second_parent))
@@ -51,9 +51,9 @@ class Genetic(Graph):
             for x in range(len(self.population)):
                 self.population[x].is_parent = True
 
-            temp_rand = random.uniform(0, 1)
+            temp_rand = uniform(0, 1)
             if self.mutation_probability >= temp_rand:
-                individual_to_mutate = self.population[random.randint(0, len(self.population) - 1)]
+                individual_to_mutate = self.population[randint(0, len(self.population) - 1)]
                 self.mutate(individual_to_mutate)
 
             self.population_selection()
@@ -76,7 +76,7 @@ class Genetic(Graph):
 
             while number_of_indexes > 1:
                 number_of_indexes -= 1
-                generated_index = random.randint(0, number_of_indexes)
+                generated_index = randint(0, number_of_indexes)
                 number = aux_individual[generated_index]
                 aux_individual[generated_index] = aux_individual[number_of_indexes]
                 aux_individual[number_of_indexes] = number
@@ -89,11 +89,11 @@ class Genetic(Graph):
         self.population_selection()
 
     def mutate(self, individual):
-        first_index = random.randint(0, self.number_of_cities - 1)
-        second_index = random.randint(0, self.number_of_cities - 1)
+        first_index = randint(0, self.number_of_cities - 1)
+        second_index = randint(0, self.number_of_cities - 1)
 
         while first_index == second_index:
-            second_index = random.randint(0, self.number_of_cities - 1)
+            second_index = randint(0, self.number_of_cities - 1)
 
         aux_number = individual.path[first_index]
         individual.path[first_index] = individual.path[second_index]
@@ -104,13 +104,13 @@ class Genetic(Graph):
         visited_cities = numpy.full(self.number_of_cities, False, dtype=bool)
         path_for_children = numpy.empty(self.number_of_cities, dtype=int)
 
-        parent_choice = random.randint(1, 2)
+        parent_choice = randint(1, 2)
 
-        first_index_of_cut_point = random.randint(0, self.number_of_cities - 1)
+        first_index_of_cut_point = randint(0, self.number_of_cities - 1)
         while self.number_of_cities - first_index_of_cut_point <= 2:
-            first_index_of_cut_point = random.randint(0, self.number_of_cities - 1)
+            first_index_of_cut_point = randint(0, self.number_of_cities - 1)
 
-        second_index_of_cut_point = random.randint(first_index_of_cut_point, self.number_of_cities - 1)
+        second_index_of_cut_point = randint(first_index_of_cut_point, self.number_of_cities - 1)
         first_iterator = first_index_of_cut_point
         second_iterator = second_index_of_cut_point - first_index_of_cut_point
 
